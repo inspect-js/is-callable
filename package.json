@@ -35,12 +35,12 @@
 		"is": "~2.2.0",
 		"tape": "~3.4.0",
 		"indexof": "~0.0.1",
-		"covert": "1.0.1",
+		"covert": "1.0.0",
 		"jscs": "~1.10.0",
 		"editorconfig-tools": "~0.0.1",
-		"nsp": "~1.0.1",
+		"nsp": "~1.0.0",
 		"eslint": "~0.13.0",
-		"make-generator-function": "~1.0.1",
+		"make-generator-function": "~1.0.0",
 		"semver": "~4.2.0"
 	},
 	"testling": {
