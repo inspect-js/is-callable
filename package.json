@@ -1,6 +1,6 @@
 {
 	"name": "is-callable",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Jordan Harband",
 	"description": "Is this JS value callable? Works with Functions and GeneratorFunctions, despite ES6 @@toStringTag.",
 	"license": "MIT",
@@ -35,12 +35,12 @@
 		"is": "~2.2.0",
 		"tape": "~3.4.0",
 		"indexof": "~0.0.1",
-		"covert": "1.0.0",
+		"covert": "1.0.1",
 		"jscs": "~1.10.0",
 		"editorconfig-tools": "~0.0.1",
-		"nsp": "~1.0.0",
+		"nsp": "~1.0.1",
 		"eslint": "~0.13.0",
-		"make-generator-function": "~1.0.0",
+		"make-generator-function": "~1.0.1",
 		"semver": "~4.2.0"
 	},
 	"testling": {
