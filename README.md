@@ -36,6 +36,7 @@ assert.notOk(isCallable(Object('foo')));
 
 assert.ok(isCallable(function () {}));
 assert.ok(isCallable(function* () {}));
+assert.ok(isCallable(x => x * x));
 ```
 
 ## Tests

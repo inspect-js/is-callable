@@ -4,6 +4,7 @@ var test = require('tape');
 var isCallable = require('./');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
 var genFn = require('make-generator-function');
+var arrowFn = require('make-arrow-function')();
 
 test('not callables', function (t) {
 	t.notOk(isCallable(), 'undefined is not callable');
@@ -40,5 +41,10 @@ test('Functions', function (t) {
 
 test('Generators', { skip: !genFn }, function (t) {
 	t.ok(isCallable(genFn), 'generator function is callable');
+	t.end();
+});
+
+test('Arrow functions', { skip: !arrowFn }, function (t) {
+	t.ok(isCallable(arrowFn), 'arrow function is callable');
 	t.end();
 });
