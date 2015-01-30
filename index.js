@@ -9,8 +9,14 @@ var tryFunctionObject = function tryFunctionObject(value) {
 		return false;
 	}
 };
+var toStr = Object.prototype.toString;
+var fnClass = '[object Function]';
+var genClass = '[object GeneratorFunction]';
+var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 
 module.exports = function isCallable(value) {
 	if (typeof value !== 'function') { return false; }
-	return tryFunctionObject(value);
+	if (hasToStringTag) { return tryFunctionObject(value); }
+	var strClass = toStr.call(value);
+	return strClass === fnClass || strClass === genClass;
 };
