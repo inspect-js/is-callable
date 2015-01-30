@@ -1,3 +1,7 @@
+1.0.4 / 2015-01-30
+=================
+  * If @@toStringTag is not present, use the old-school Object#toString test.
+
 1.0.3 / 2015-01-29
 =================
   * Add tests to ensure arrow functions are callable.
