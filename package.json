@@ -38,7 +38,7 @@
 		"jscs": "^1.13.1",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^1.0.1",
-		"eslint": "^0.21.0",
+		"eslint": "^0.21.2",
 		"make-arrow-function": "^1.0.0",
 		"make-generator-function": "^1.1.0",
 		"semver": "^4.3.4"
