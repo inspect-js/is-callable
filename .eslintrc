@@ -8,7 +8,7 @@
 	},
 
 	"rules": {
-		"accessor-pairs": [2, { getWithoutSet: true, setWithoutGet: true }],
+		"accessor-pairs": [2, { getWithoutSet: false, setWithoutGet: true }],
 		"block-scoped-var": [0],
 		"brace-style": [2, "1tbs", { "allowSingleLine": true }],
 		"camelcase": [2],
