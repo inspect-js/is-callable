@@ -41,7 +41,7 @@
 		"eslint": "^0.22.1",
 		"make-arrow-function": "^1.0.0",
 		"make-generator-function": "^1.1.0",
-		"semver": "^4.3.5"
+		"semver": "^4.3.6"
 	},
 	"testling": {
 		"files": "test.js",
