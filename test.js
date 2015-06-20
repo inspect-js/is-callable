@@ -7,21 +7,34 @@ var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 
 test('not callables', function (t) {
-	t.notOk(isCallable(), 'undefined is not callable');
-	t.notOk(isCallable(null), 'null is not callable');
-	t.notOk(isCallable(false), 'false is not callable');
-	t.notOk(isCallable(true), 'true is not callable');
+	t.test('non-number/string primitives', function (st) {
+		st.notOk(isCallable(), 'undefined is not callable');
+		st.notOk(isCallable(null), 'null is not callable');
+		st.notOk(isCallable(false), 'false is not callable');
+		st.notOk(isCallable(true), 'true is not callable');
+		st.end();
+	});
+
 	t.notOk(isCallable([]), 'array is not callable');
 	t.notOk(isCallable({}), 'object is not callable');
 	t.notOk(isCallable(/a/g), 'regex literal is not callable');
 	t.notOk(isCallable(new RegExp('a', 'g')), 'regex object is not callable');
 	t.notOk(isCallable(new Date()), 'new Date() is not callable');
-	t.notOk(isCallable(42), 'number is not callable');
-	t.notOk(isCallable(Object(42)), 'number object is not callable');
-	t.notOk(isCallable(NaN), 'NaN is not callable');
-	t.notOk(isCallable(Infinity), 'Infinity is not callable');
-	t.notOk(isCallable('foo'), 'string primitive is not callable');
-	t.notOk(isCallable(Object('foo')), 'string object is not callable');
+
+	t.test('numbers', function (st) {
+		st.notOk(isCallable(42), 'number is not callable');
+		st.notOk(isCallable(Object(42)), 'number object is not callable');
+		st.notOk(isCallable(NaN), 'NaN is not callable');
+		st.notOk(isCallable(Infinity), 'Infinity is not callable');
+		st.end();
+	});
+
+	t.test('strings', function (st) {
+		st.notOk(isCallable('foo'), 'string primitive is not callable');
+		st.notOk(isCallable(Object('foo')), 'string object is not callable');
+		st.end();
+	});
+
 	t.end();
 });
 
