@@ -38,10 +38,10 @@
 		"jscs": "^1.13.1",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^1.0.3",
-		"eslint": "^0.24.0",
+		"eslint": "^1.0.0-rc-1",
 		"make-arrow-function": "^1.0.0",
 		"make-generator-function": "^1.1.0",
-		"semver": "^4.3.6"
+		"semver": "^5.0.1"
 	},
 	"testling": {
 		"files": "test.js",
