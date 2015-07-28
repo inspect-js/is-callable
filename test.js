@@ -40,7 +40,10 @@ test('not callables', function (t) {
 
 test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t) {
 	var fn = function () { return 3; };
-	var fakeFunction = { valueOf: function () { return fn; }, toString: function () { return String(fn); } };
+	var fakeFunction = {
+		valueOf: function () { return fn; },
+		toString: function () { return String(fn); }
+	};
 	fakeFunction[Symbol.toStringTag] = 'Function';
 	t.notOk(isCallable(fakeFunction), 'fake Function with @@toStringTag "Function" is not callable');
 	t.end();
