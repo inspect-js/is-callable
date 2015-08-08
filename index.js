@@ -12,10 +12,12 @@ var tryFunctionObject = function tryFunctionObject(value) {
 var toStr = Object.prototype.toString;
 var fnClass = '[object Function]';
 var genClass = '[object GeneratorFunction]';
+var constructorRegex = /\s*class /;
 var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 
 module.exports = function isCallable(value) {
 	if (typeof value !== 'function') { return false; }
+	if (constructorRegex.test(value)) { return false; }
 	if (hasToStringTag) { return tryFunctionObject(value); }
 	var strClass = toStr.call(value);
 	return strClass === fnClass || strClass === genClass;

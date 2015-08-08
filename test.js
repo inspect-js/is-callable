@@ -6,6 +6,14 @@ var hasSymbols = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
 var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 
+var classConstructor;
+try {
+	/* eslint-disable no-new-func */
+	var makeClassConstructor = Function('"use strict"; return class Foo {}');
+	/* eslint-enable no-new-func */
+	classConstructor = makeClassConstructor();
+} catch (e) {/**/}
+
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
 		st.notOk(isCallable(), 'undefined is not callable');
@@ -62,5 +70,10 @@ test('Generators', { skip: !genFn }, function (t) {
 
 test('Arrow functions', { skip: !arrowFn }, function (t) {
 	t.ok(isCallable(arrowFn), 'arrow function is callable');
+	t.end();
+});
+
+test('"Class" constructors', { skip: !classConstructor }, function (t) {
+	t.notOk(isCallable(classConstructor), 'class constructors are not callable');
 	t.end();
 });
