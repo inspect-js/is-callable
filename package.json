@@ -10,8 +10,8 @@
 		"coverage": "covert test.js",
 		"coverage-quiet": "covert test.js --quiet",
 		"lint": "npm run jscs && npm run eslint",
-		"jscs": "jscs test.js *.js",
-		"eslint": "eslint test.js *.js",
+		"jscs": "jscs *.js",
+		"eslint": "eslint *.js",
 		"eccheck": "editorconfig-tools check *.js **/*.js > /dev/null",
 		"security": "nsp package"
 	},
