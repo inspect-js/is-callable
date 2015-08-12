@@ -43,7 +43,7 @@ assert.ok(isCallable(x => x * x));
 Simply clone the repo, `npm install`, and run `npm test`
 
 [1]: https://npmjs.org/package/is-callable
-[2]: http://vb.teelaun.ch/ljharb/is-callable.svg
+[2]: http://versionbadg.es/ljharb/is-callable.svg
 [3]: https://travis-ci.org/ljharb/is-callable.svg
 [4]: https://travis-ci.org/ljharb/is-callable
 [5]: https://david-dm.org/ljharb/is-callable.svg
