@@ -1,6 +1,6 @@
 {
 	"name": "is-callable",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"author": "Jordan Harband",
 	"description": "Is this JS value callable? Works with Functions and GeneratorFunctions, despite ES6 @@toStringTag.",
 	"license": "MIT",
