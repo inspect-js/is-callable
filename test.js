@@ -5,6 +5,7 @@ var isCallable = require('./');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
 var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
+var forEach = require('foreach');
 
 var classConstructor;
 try {
@@ -57,10 +58,31 @@ test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t)
 	t.end();
 });
 
+var typedArrayNames = [
+	'Int8Array',
+	'Uint8Array',
+	'Uint8ClampedArray',
+	'Int16Array',
+	'Uint16Array',
+	'Int32Array',
+	'Uint32Array',
+	'Float32Array',
+	'Float64Array'
+];
+
 test('Functions', function (t) {
 	t.ok(isCallable(function () {}), 'function is callable');
 	t.ok(isCallable(isCallable), 'isCallable is callable');
 	t.end();
+});
+
+test('Typed Arrays', function (st) {
+	forEach(typedArrayNames, function (typedArray) {
+		if (typeof global[typedArray] !== 'undefined') {
+			st.ok(isCallable(global[typedArray]), typedArray + ' is callable');
+		}
+	});
+	st.end();
 });
 
 test('Generators', { skip: !genFn }, function (t) {

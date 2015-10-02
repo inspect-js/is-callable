@@ -16,7 +16,8 @@ var constructorRegex = /\s*class /;
 var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 
 module.exports = function isCallable(value) {
-	if (typeof value !== 'function') { return false; }
+	if (!value) { return false; }
+	if (typeof value !== 'function' && typeof value !== 'object') { return false; }
 	if (constructorRegex.test(value)) { return false; }
 	if (hasToStringTag) { return tryFunctionObject(value); }
 	var strClass = toStr.call(value);
