@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint no-magic-numbers: 1 */
+
 var test = require('tape');
 var isCallable = require('./');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
