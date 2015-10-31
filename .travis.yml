@@ -33,6 +33,8 @@ node_js:
 before_install:
   - 'case "$(npm --version)" in 1.*) npm install -g npm@1.4.28 ;; 2.*) npm install -g npm@2 ;; esac'
   - 'npm install -g npm'
+script:
+  - 'if [ "${TRAVIS_NODE_VERSION}" != "4.2" ]; then npm run tests-only ; else npm test ; fi'
 sudo: false
 matrix:
   fast_finish: true
