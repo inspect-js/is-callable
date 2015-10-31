@@ -31,7 +31,8 @@ node_js:
   - "0.6"
   - "0.4"
 before_install:
-  - '[ "${TRAVIS_NODE_VERSION}" = "0.6" ] || npm install -g npm@1.4.28 && npm install -g npm'
+  - 'case "$(npm --version)" in 1.*) npm install -g npm@1.4.28 ;; 2.*) npm install -g npm@2 ;; esac'
+  - 'npm install -g npm'
 sudo: false
 matrix:
   fast_finish: true
