@@ -15,7 +15,7 @@ try {
 	var makeClassConstructor = Function('"use strict"; return class Foo {}');
 	/* eslint-enable no-new-func */
 	classConstructor = makeClassConstructor();
-} catch (e) {/**/}
+} catch (e) { /**/ }
 
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
