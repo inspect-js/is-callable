@@ -46,6 +46,14 @@ test('not callables', function (t) {
 		st.end();
 	});
 
+	t.test('non-function with function in its [[Prototype]] chain', function (st) {
+		var Foo = function Bar() {};
+		Foo.prototype = function () {};
+		st.equal(true, isCallable(Foo), 'sanity check: Foo is callable');
+		st.equal(false, isCallable(new Foo()), 'instance of Foo is not callable');
+		st.end();
+	});
+
 	t.end();
 });
 
