@@ -1,3 +1,11 @@
+1.1.1 / 2015-11-30
+=================
+  * [Fix] do not throw when a non-function has a function in its [[Prototype]] (#2)
+  * [Dev Deps] update `tape`, `eslint`, `@ljharb/eslint-config`, `jscs`, `nsp`, `semver`
+  * [Tests] up to `node` `v5.1`
+  * [Tests] no longer allow node 0.8 to fail.
+  * [Tests] fix npm upgrades in older nodes
+
 1.1.0 / 2015-10-02
 =================
   * [Fix] Some browsers report TypedArray constructors as `typeof object`
