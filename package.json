@@ -18,7 +18,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "npm run lint && npm run tests-only && npm run security",
-		"tests-only": "node --es-staging test.js",
+		"tests-only": "parallelshell 'npm run test:stock' 'npm run test:staging'",
+		"test:stock": "node test.js",
+		"test:staging": "node --es-staging test.js",
 		"coverage": "covert test.js",
 		"coverage-quiet": "covert test.js --quiet",
 		"lint": "npm run jscs && npm run eslint",
@@ -55,7 +57,8 @@
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
 		"semver": "^5.1.0",
-		"foreach": "^2.0.5"
+		"foreach": "^2.0.5",
+		"parallelshell": "^2.0.0"
 	},
 	"testling": {
 		"files": "test.js",
