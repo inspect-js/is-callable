@@ -1,3 +1,11 @@
+1.1.2 / 2016-01-15
+=================
+  * [Fix] Make sure comments don’t screw up “class” detection (#4)
+  * [Tests] up to `node` `v5.3`
+  * [Tests] Add `parallelshell`, run both `--es-staging` and stock tests at once
+  * [Dev Deps] update `tape`, `jscs`, `nsp`, `eslint`, `@ljharb/eslint-config`
+  * [Refactor] convert `isNonES6ClassFn` into `isES6ClassFn`
+
 1.1.1 / 2015-11-30
 =================
   * [Fix] do not throw when a non-function has a function in its [[Prototype]] (#2)
