@@ -5,7 +5,11 @@ var fnToStr = Function.prototype.toString;
 var constructorRegex = /\s*class /;
 var isES6ClassFn = function isES6ClassFn(value) {
 	try {
-		return constructorRegex.test(fnToStr.call(value));
+		var fnStr = fnToStr.call(value);
+		var singleStripped = fnStr.replace(/\/\/.*\n/g, '');
+		var multiStripped = singleStripped.replace(/\/\*[.\s\S]*\*\//g, '');
+		var spaceStripped = multiStripped.replace(/\n/mg, ' ').replace(/ {2}/g, ' ');
+		return constructorRegex.test(spaceStripped);
 	} catch (e) {
 		return false; // not a function
 	}

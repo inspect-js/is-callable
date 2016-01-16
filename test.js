@@ -9,13 +9,20 @@ var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 var forEach = require('foreach');
 
-var classConstructor;
-try {
-	/* eslint-disable no-new-func */
-	var makeClassConstructor = Function('"use strict"; return class Foo {}');
-	/* eslint-enable no-new-func */
-	classConstructor = makeClassConstructor();
-} catch (e) { /**/ }
+var invokeFunction = function invokeFunction(str) {
+    var result;
+	try {
+		/* eslint-disable no-new-func */
+		var fn = Function(str);
+		/* eslint-enable no-new-func */
+		result = fn();
+	} catch (e) { /**/ }
+	return result;
+};
+
+var classConstructor = invokeFunction('"use strict"; return class Foo {}');
+
+var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n\/\/blah\n Bar\n\/\/blah\n {}');
 
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
@@ -105,7 +112,8 @@ test('Arrow functions', { skip: !arrowFn }, function (t) {
 	t.end();
 });
 
-test('"Class" constructors', { skip: !classConstructor }, function (t) {
+test('"Class" constructors', { skip: !classConstructor || !commentedClass }, function (t) {
 	t.notOk(isCallable(classConstructor), 'class constructors are not callable');
+	t.notOk(isCallable(commentedClass), 'class constructors with comments in the signature are not callable');
 	t.end();
 });
