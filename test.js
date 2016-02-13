@@ -1,5 +1,6 @@
 'use strict';
 
+/* global Symbol */
 /* eslint no-magic-numbers: 1 */
 
 var test = require('tape');
