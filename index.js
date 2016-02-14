@@ -1,7 +1,5 @@
 'use strict';
 
-/* global Symbol */
-
 var fnToStr = Function.prototype.toString;
 
 var constructorRegex = /\s*class /;
