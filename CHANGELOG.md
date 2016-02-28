@@ -1,3 +1,9 @@
+1.1.3 / 2016-02-27
+=================
+  * [Fix] ensure “class “ doesn’t screw up “class” detection
+  * [Tests] up to `node` `v5.7`, `v4.3`
+  * [Dev Deps] update to `eslint` v2, `@ljharb/eslint-config`, `jscs`
+
 1.1.2 / 2016-01-15
 =================
   * [Fix] Make sure comments don’t screw up “class” detection (#4)
