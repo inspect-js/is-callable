@@ -2,7 +2,7 @@
 
 var fnToStr = Function.prototype.toString;
 
-var constructorRegex = /\s*class /;
+var constructorRegex = /^\s*class /;
 var isES6ClassFn = function isES6ClassFn(value) {
 	try {
 		var fnStr = fnToStr.call(value);

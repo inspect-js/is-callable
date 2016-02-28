@@ -89,6 +89,8 @@ var typedArrayNames = [
 
 test('Functions', function (t) {
 	t.ok(isCallable(function () {}), 'function is callable');
+	t.ok(isCallable(function classFake() { }), 'function with name containing "class" is callable');
+	t.ok(isCallable(function () { return ' class '; }), 'function with string " class " is callable');
 	t.ok(isCallable(isCallable), 'isCallable is callable');
 	t.end();
 });
