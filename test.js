@@ -22,7 +22,7 @@ var invokeFunction = function invokeFunction(str) {
 
 var classConstructor = invokeFunction('"use strict"; return class Foo {}');
 
-var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n\/\/blah\n Bar\n\/\/blah\n {}');
+var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n//blah\n Bar\n//blah\n {}');
 
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
