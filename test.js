@@ -9,6 +9,17 @@ var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 var forEach = require('foreach');
 
+var noop = function () {};
+var classFake = function classFake() { };
+var returnClass = function () { return ' class '; };
+var return3 = function () { return 3; };
+/* for coverage */
+noop();
+classFake();
+returnClass();
+return3();
+/* end for coverage */
+
 var invokeFunction = function invokeFunction(str) {
     var result;
 	try {
@@ -55,7 +66,7 @@ test('not callables', function (t) {
 
 	t.test('non-function with function in its [[Prototype]] chain', function (st) {
 		var Foo = function Bar() {};
-		Foo.prototype = function () {};
+		Foo.prototype = noop;
 		st.equal(true, isCallable(Foo), 'sanity check: Foo is callable');
 		st.equal(false, isCallable(new Foo()), 'instance of Foo is not callable');
 		st.end();
@@ -65,12 +76,13 @@ test('not callables', function (t) {
 });
 
 test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t) {
-	var fn = function () { return 3; };
 	var fakeFunction = {
-		toString: function () { return String(fn); },
-		valueOf: function () { return fn; }
+		toString: function () { return String(return3); },
+		valueOf: return3
 	};
 	fakeFunction[Symbol.toStringTag] = 'Function';
+	t.equal(String(fakeFunction), String(return3));
+	t.equal(Number(fakeFunction), return3());
 	t.notOk(isCallable(fakeFunction), 'fake Function with @@toStringTag "Function" is not callable');
 	t.end();
 });
@@ -88,16 +100,19 @@ var typedArrayNames = [
 ];
 
 test('Functions', function (t) {
-	t.ok(isCallable(function () {}), 'function is callable');
-	t.ok(isCallable(function classFake() { }), 'function with name containing "class" is callable');
-	t.ok(isCallable(function () { return ' class '; }), 'function with string " class " is callable');
+	t.ok(isCallable(noop), 'function is callable');
+	t.ok(isCallable(classFake), 'function with name containing "class" is callable');
+	t.ok(isCallable(returnClass), 'function with string " class " is callable');
 	t.ok(isCallable(isCallable), 'isCallable is callable');
 	t.end();
 });
 
 test('Typed Arrays', function (st) {
 	forEach(typedArrayNames, function (typedArray) {
-		if (typeof global[typedArray] !== 'undefined') {
+		/* istanbul ignore if : covered in node 0.6 */
+		if (typeof global[typedArray] === 'undefined') {
+			st.comment('# SKIP typed array "' + typedArray + '" not supported');
+		} else {
 			st.ok(isCallable(global[typedArray]), typedArray + ' is callable');
 		}
 	});
