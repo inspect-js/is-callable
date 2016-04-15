@@ -21,13 +21,13 @@ return3();
 /* end for coverage */
 
 var invokeFunction = function invokeFunction(str) {
-    var result;
+	var result;
 	try {
 		/* eslint-disable no-new-func */
 		var fn = Function(str);
 		/* eslint-enable no-new-func */
 		result = fn();
-	} catch (e) { /**/ }
+	} catch (e) {}
 	return result;
 };
 
