@@ -17,7 +17,7 @@
 	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
-		"pretest": "parallelshell 'npm run --silent lint' 'npm run --silent istanbul'",
+		"pretest": "npm run --silent lint && npm run --silent istanbul",
 		"test": "npm run --silent tests-only",
 		"posttest": "npm run --silent security",
 		"tests-only": "parallelshell 'npm run --silent test:stock' 'npm run --silent test:staging'",
