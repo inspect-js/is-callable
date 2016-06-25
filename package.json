@@ -64,7 +64,7 @@
 		"semver": "^5.1.0",
 		"foreach": "^2.0.5",
 		"parallelshell": "^2.0.0",
-		"istanbul": "1.0.0-alpha.2",
+		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.0",
 		"rimraf": "^2.5.2"
 	},
