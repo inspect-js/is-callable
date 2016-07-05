@@ -53,20 +53,20 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"tape": "^4.5.1",
+		"tape": "^4.6.0",
 		"covert": "^1.1.0",
-		"jscs": "^3.0.3",
-		"nsp": "^2.4.0",
-		"eslint": "^2.11.0",
-		"@ljharb/eslint-config": "^5.0.0",
+		"jscs": "^3.0.6",
+		"nsp": "^2.5.0",
+		"eslint": "^3.0.1",
+		"@ljharb/eslint-config": "^6.0.0",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
-		"semver": "^5.1.0",
+		"semver": "^5.2.0",
 		"foreach": "^2.0.5",
 		"parallelshell": "^2.0.0",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.0",
-		"rimraf": "^2.5.2"
+		"rimraf": "^2.5.3"
 	},
 	"testling": {
 		"files": "test.js",
