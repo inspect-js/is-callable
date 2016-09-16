@@ -4,7 +4,7 @@
 
 var test = require('tape');
 var isCallable = require('./');
-var hasSymbols = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
+var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
 var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 var forEach = require('foreach');
