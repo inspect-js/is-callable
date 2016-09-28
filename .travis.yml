@@ -1,5 +1,6 @@
 language: node_js
 node_js:
+  - "6.7"
   - "6.6"
   - "6.5"
   - "6.4"
@@ -20,6 +21,7 @@ node_js:
   - "5.2"
   - "5.1"
   - "5.0"
+  - "4.6"
   - "4.5"
   - "4.4"
   - "4.3"
@@ -70,6 +72,7 @@ matrix:
     - node_js: "4"
       env: COVERAGE=true
   allow_failures:
+    - node_js: "6.6"
     - node_js: "6.5"
     - node_js: "6.4"
     - node_js: "6.3"
@@ -88,6 +91,7 @@ matrix:
     - node_js: "5.2"
     - node_js: "5.1"
     - node_js: "5.0"
+    - node_js: "4.5"
     - node_js: "4.4"
     - node_js: "4.3"
     - node_js: "4.2"
