@@ -17,10 +17,10 @@
 	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
-		"pretest": "npm run --silent lint && npm run --silent coverage",
+		"pretest": "npm run --silent lint",
 		"test": "npm run --silent tests-only",
 		"posttest": "npm run --silent security",
-		"tests-only": "parallelshell 'npm run --silent test:stock' 'npm run --silent test:staging'",
+		"tests-only": "npm run --silent test:stock && npm run --silent test:staging",
 		"test:stock": "node test.js",
 		"test:staging": "node --es-staging test.js",
 		"coverage": "npm run --silent istanbul",
