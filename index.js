@@ -3,7 +3,7 @@
 var fnToStr = Function.prototype.toString;
 
 var constructorRegex = /^\s*class /;
-var isES6ClassFn = function isES6ClassFn(value) {
+var isES6ClassFn = function isES6ClassFunction(value) {
 	try {
 		var fnStr = fnToStr.call(value);
 		var singleStripped = fnStr.replace(/\/\/.*\n/g, '');
@@ -15,7 +15,7 @@ var isES6ClassFn = function isES6ClassFn(value) {
 	}
 };
 
-var tryFunctionObject = function tryFunctionObject(value) {
+var tryFunctionObject = function tryFunctionToStr(value) {
 	try {
 		if (isES6ClassFn(value)) { return false; }
 		fnToStr.call(value);

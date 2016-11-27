@@ -10,7 +10,7 @@ var arrowFn = require('make-arrow-function')();
 var forEach = require('foreach');
 
 var noop = function () {};
-var classFake = function classFake() { };
+var classFake = function classFake() { }; // eslint-disable-line func-name-matching
 var returnClass = function () { return ' class '; };
 var return3 = function () { return 3; };
 /* for coverage */
@@ -20,7 +20,7 @@ returnClass();
 return3();
 /* end for coverage */
 
-var invokeFunction = function invokeFunction(str) {
+var invokeFunction = function invokeFunctionString(str) {
 	var result;
 	try {
 		/* eslint-disable no-new-func */
