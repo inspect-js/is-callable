@@ -3,9 +3,9 @@ os:
  - linux
 node_js:
   - "7.5"
-  - "6.9"
+  - "6.10"
   - "5.12"
-  - "4.7"
+  - "4.8"
   - "iojs-v3.3"
   - "iojs-v2.5"
   - "iojs-v1.8"
@@ -41,6 +41,8 @@ matrix:
     - node_js: "7.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "7.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.9"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "6.8"
       env: TEST=true ALLOW_FAILURE=true
@@ -83,6 +85,8 @@ matrix:
     - node_js: "5.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "5.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.7"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "4.6"
       env: TEST=true ALLOW_FAILURE=true
