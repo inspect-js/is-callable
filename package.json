@@ -57,8 +57,8 @@
 		"tape": "^4.6.3",
 		"covert": "^1.1.0",
 		"jscs": "^3.0.7",
-		"nsp": "^2.6.2",
-		"eslint": "^3.15.0",
+		"nsp": "^2.6.3",
+		"eslint": "^3.19.0",
 		"@ljharb/eslint-config": "^11.0.0",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
@@ -67,7 +67,7 @@
 		"parallelshell": "^2.0.0",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
-		"rimraf": "^2.5.4"
+		"rimraf": "^2.6.1"
 	},
 	"testling": {
 		"files": "test.js",
