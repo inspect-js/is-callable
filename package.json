@@ -31,6 +31,7 @@
 		"istanbul:merge": "istanbul-merge --out coverage/coverage.raw.json coverage-harmony/coverage.raw.json coverage-std/coverage.raw.json && istanbul report html",
 		"istanbul:harmony": "node --harmony ./node_modules/istanbul/lib/cli.js cover test.js --dir coverage-harmony",
 		"istanbul:std": "istanbul cover test.js --report html --dir coverage-std",
+        "prelint": "editorconfig-tools check *",
 		"lint": "npm run jscs && npm run eslint",
 		"jscs": "jscs *.js",
 		"eslint": "eslint *.js",
@@ -54,20 +55,21 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"tape": "^4.6.3",
-		"covert": "^1.1.0",
-		"jscs": "^3.0.7",
-		"nsp": "^2.6.3",
-		"eslint": "^3.19.0",
 		"@ljharb/eslint-config": "^11.0.0",
-		"make-arrow-function": "^1.1.0",
-		"make-generator-function": "^1.1.0",
-		"semver": "^5.3.0",
+		"covert": "^1.1.0",
+		"editorconfig-tools": "^0.1.1",
+		"eslint": "^3.19.0",
 		"foreach": "^2.0.5",
-		"parallelshell": "^2.0.0",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
-		"rimraf": "^2.6.1"
+		"jscs": "^3.0.7",
+		"make-arrow-function": "^1.1.0",
+		"make-generator-function": "^1.1.0",
+		"nsp": "^2.6.3",
+		"parallelshell": "^2.0.0",
+		"rimraf": "^2.6.1",
+		"semver": "^5.3.0",
+		"tape": "^4.6.3"
 	},
 	"testling": {
 		"files": "test.js",
@@ -91,4 +93,3 @@
 		"node": ">= 0.4"
 	}
 }
-
