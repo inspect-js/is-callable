@@ -28,3 +28,8 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Only apps should have lockfiles
+yarn.lock
+package-lock.json
+npm-shrinkwrap.json
