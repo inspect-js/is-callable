@@ -66,7 +66,7 @@
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
 		"nsp": "^2.6.3",
-		"parallelshell": "^2.0.0",
+		"parallelshell": "^3.0.0",
 		"rimraf": "^2.6.1",
 		"semver": "^5.3.0",
 		"tape": "^4.6.3"
