@@ -26,7 +26,7 @@
 		"coverage": "npm run --silent istanbul",
 		"covert": "covert test.js",
 		"covert:quiet": "covert test.js --quiet",
-		"istanbul": "npm run --silent istanbul:clean && parallelshell 'npm run --silent istanbul:std' 'npm run --silent istanbul:harmony' >/dev/null && npm run --silent istanbul:merge && istanbul check",
+		"istanbul": "npm run --silent istanbul:clean && npm run --silent istanbul:std && npm run --silent istanbul:harmony && npm run --silent istanbul:merge && istanbul check",
 		"istanbul:clean": "rimraf coverage coverage-std coverage-harmony",
 		"istanbul:merge": "istanbul-merge --out coverage/coverage.raw.json coverage-harmony/coverage.raw.json coverage-std/coverage.raw.json && istanbul report html",
 		"istanbul:harmony": "node --harmony ./node_modules/istanbul/lib/cli.js cover test.js --dir coverage-harmony",
@@ -66,7 +66,6 @@
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
 		"nsp": "^2.6.3",
-		"parallelshell": "^2.0.0",
 		"rimraf": "^2.6.1",
 		"semver": "^5.3.0",
 		"tape": "^4.6.3"
