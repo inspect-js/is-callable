@@ -7,6 +7,12 @@ var isCallable = require('./');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
 var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
+var asyncFn;
+var asyncArrowFn;
+try {
+  asyncFn = Function('return async function foo() {};')();
+  asyncArrowFn = Function('return async () => {};')();
+} catch (e) {/**/}
 var forEach = require('foreach');
 
 var noop = function () {};
@@ -132,5 +138,11 @@ test('Arrow functions', { skip: !arrowFn }, function (t) {
 test('"Class" constructors', { skip: !classConstructor || !commentedClass }, function (t) {
 	t.notOk(isCallable(classConstructor), 'class constructors are not callable');
 	t.notOk(isCallable(commentedClass), 'class constructors with comments in the signature are not callable');
+	t.end();
+});
+
+test('`async function`s', { skip: !asyncFn }, function (t) {
+	t.ok(isCallable(asyncFn), '`async function`s are callable');
+	t.ok(isCallable(asyncArrowFn), '`async` arrow functions are callable');
 	t.end();
 });
