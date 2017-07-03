@@ -10,9 +10,10 @@ var arrowFn = require('make-arrow-function')();
 var asyncFn;
 var asyncArrowFn;
 try {
-  asyncFn = Function('return async function foo() {};')();
-  asyncArrowFn = Function('return async () => {};')();
-} catch (e) {/**/}
+	/* eslint no-new-func: 0 */
+	asyncFn = Function('return async function foo() {};')();
+	asyncArrowFn = Function('return async () => {};')();
+} catch (e) { /**/ }
 var forEach = require('foreach');
 
 var noop = function () {};
