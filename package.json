@@ -58,7 +58,7 @@
 		"@ljharb/eslint-config": "^12.2.1",
 		"covert": "^1.1.0",
 		"editorconfig-tools": "^0.1.1",
-		"eslint": "^4.7.2",
+		"eslint": "^4.8.0",
 		"foreach": "^2.0.5",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
