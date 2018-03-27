@@ -2,7 +2,7 @@ language: node_js
 os:
  - linux
 node_js:
-  - "9.8"
+  - "9.9"
   - "8.10"
   - "7.10"
   - "6.13"
@@ -35,6 +35,8 @@ matrix:
       env: POSTTEST=true
     - node_js: "4"
       env: COVERAGE=true
+    - node_js: "9.8"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "9.7"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "9.6"
