@@ -2,12 +2,12 @@
 
 var fnToStr = Function.prototype.toString;
 
-var constructorRegex = /^\s*class /;
+var constructorRegex = /^\s*class(?: |{)/;
 var isES6ClassFn = function isES6ClassFunction(value) {
 	try {
 		var fnStr = fnToStr.call(value);
-		var singleStripped = fnStr.replace(/\/\/.*\n/g, '');
-		var multiStripped = singleStripped.replace(/\/\*[.\s\S]*\*\//g, '');
+		var singleStripped = fnStr.replace(/\/\/.*\n/g, ' ');
+		var multiStripped = singleStripped.replace(/(\/\*[\w'\s\r\n*]*\*\/)|(\/\/[\w\s']*)|(<![-\-\s\w>/]*>)/g, ' ');
 		var spaceStripped = multiStripped.replace(/\n/mg, ' ').replace(/ {2}/g, ' ');
 		return constructorRegex.test(spaceStripped);
 	} catch (e) {

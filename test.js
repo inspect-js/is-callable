@@ -9,10 +9,12 @@ var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
 var asyncFn;
 var asyncArrowFn;
+var weirdlyCommentedArrowFn;
 try {
 	/* eslint no-new-func: 0 */
 	asyncFn = Function('return async function foo() {};')();
 	asyncArrowFn = Function('return async () => {};')();
+	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
 } catch (e) { /**/ }
 var forEach = require('foreach');
 
@@ -41,6 +43,8 @@ var invokeFunction = function invokeFunctionString(str) {
 var classConstructor = invokeFunction('"use strict"; return class Foo {}');
 
 var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n//blah\n Bar\n//blah\n {}');
+var commentedClassOneLine = invokeFunction('"use strict"; return class/**/A{}');
+var classAnonymous = invokeFunction('"use strict"; return class{}');
 
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
@@ -133,12 +137,15 @@ test('Generators', { skip: !genFn }, function (t) {
 
 test('Arrow functions', { skip: !arrowFn }, function (t) {
 	t.ok(isCallable(arrowFn), 'arrow function is callable');
+	t.ok(isCallable(weirdlyCommentedArrowFn), 'weirdly commented arrow functions are callable');
 	t.end();
 });
 
-test('"Class" constructors', { skip: !classConstructor || !commentedClass }, function (t) {
+test('"Class" constructors', { skip: !classConstructor || !commentedClass || !commentedClassOneLine || !classAnonymous }, function (t) {
 	t.notOk(isCallable(classConstructor), 'class constructors are not callable');
 	t.notOk(isCallable(commentedClass), 'class constructors with comments in the signature are not callable');
+	t.notOk(isCallable(commentedClassOneLine), 'one-line class constructors with comments in the signature are not callable');
+	t.notOk(isCallable(classAnonymous), 'anonymous class constructors are not callable');
 	t.end();
 });
 
