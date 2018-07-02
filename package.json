@@ -68,7 +68,7 @@
 		"nsp": "^3.2.1",
 		"rimraf": "^2.6.2",
 		"semver": "^5.5.0",
-		"tape": "^4.9.0"
+		"tape": "^4.9.1"
 	},
 	"testling": {
 		"files": "test.js",
