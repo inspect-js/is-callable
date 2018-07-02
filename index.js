@@ -2,14 +2,11 @@
 
 var fnToStr = Function.prototype.toString;
 
-var constructorRegex = /^\s*class(?: |{)/;
+var constructorRegex = /^\s*class\b/;
 var isES6ClassFn = function isES6ClassFunction(value) {
 	try {
 		var fnStr = fnToStr.call(value);
-		var singleStripped = fnStr.replace(/\/\/.*\n/g, ' ');
-		var multiStripped = singleStripped.replace(/(\/\*[\w'\s\r\n*]*\*\/)|(\/\/[\w\s']*)|(<![-\-\s\w>/]*>)/g, ' ');
-		var spaceStripped = multiStripped.replace(/\n/mg, ' ').replace(/ {2}/g, ' ');
-		return constructorRegex.test(spaceStripped);
+		return constructorRegex.test(fnStr);
 	} catch (e) {
 		return false; // not a function
 	}

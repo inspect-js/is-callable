@@ -45,6 +45,7 @@ var classConstructor = invokeFunction('"use strict"; return class Foo {}');
 var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n//blah\n Bar\n//blah\n {}');
 var commentedClassOneLine = invokeFunction('"use strict"; return class/**/A{}');
 var classAnonymous = invokeFunction('"use strict"; return class{}');
+var classAnonymousCommentedOneLine = invokeFunction('"use strict"; return class/*/*/{}');
 
 test('not callables', function (t) {
 	t.test('non-number/string primitives', function (st) {
@@ -146,6 +147,7 @@ test('"Class" constructors', { skip: !classConstructor || !commentedClass || !co
 	t.notOk(isCallable(commentedClass), 'class constructors with comments in the signature are not callable');
 	t.notOk(isCallable(commentedClassOneLine), 'one-line class constructors with comments in the signature are not callable');
 	t.notOk(isCallable(classAnonymous), 'anonymous class constructors are not callable');
+	t.notOk(isCallable(classAnonymousCommentedOneLine), 'anonymous one-line class constructors with comments in the signature are not callable');
 	t.end();
 });
 
