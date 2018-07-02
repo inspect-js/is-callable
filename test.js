@@ -7,14 +7,14 @@ var isCallable = require('./');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
 var genFn = require('make-generator-function');
 var arrowFn = require('make-arrow-function')();
+var weirdlyCommentedArrowFn;
 var asyncFn;
 var asyncArrowFn;
-var weirdlyCommentedArrowFn;
 try {
 	/* eslint no-new-func: 0 */
+	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
 	asyncFn = Function('return async function foo() {};')();
 	asyncArrowFn = Function('return async () => {};')();
-	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
 } catch (e) { /**/ }
 var forEach = require('foreach');
 
