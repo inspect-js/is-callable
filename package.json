@@ -55,10 +55,10 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^12.2.1",
+		"@ljharb/eslint-config": "^13.0.0",
 		"covert": "^1.1.0",
 		"editorconfig-tools": "^0.1.1",
-		"eslint": "^4.19.1",
+		"eslint": "^5.5.0",
 		"foreach": "^2.0.5",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
@@ -67,7 +67,7 @@
 		"make-generator-function": "^1.1.0",
 		"nsp": "^3.2.1",
 		"rimraf": "^2.6.2",
-		"semver": "^5.5.0",
+		"semver": "^5.5.1",
 		"tape": "^4.9.1"
 	},
 	"testling": {
