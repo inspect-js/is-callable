@@ -1,0 +1,9 @@
+.editorconfig
+.eslintrc
+.gitignore
+.istanbul.yml
+.jscs.json
+.travis.yml
+CHANGELOG.md
+Makefile
+test.js
