@@ -19,7 +19,7 @@
 	"scripts": {
 		"pretest": "npm run --silent lint",
 		"test": "npm run --silent tests-only",
-		"posttest": "npm run --silent security",
+		"posttest": "npm run audit",
 		"tests-only": "npm run --silent test:stock && npm run --silent test:staging",
 		"test:stock": "node test.js",
 		"test:staging": "node --es-staging test.js",
@@ -35,7 +35,9 @@
 		"lint": "npm run jscs && npm run eslint",
 		"jscs": "jscs *.js",
 		"eslint": "eslint *.js",
-		"security": "nsp check"
+		"preaudit": "npm install --package-lock --package-lock-only",
+		"audit": "npm audit",
+		"postaudit": "rm package-lock.json"
 	},
 	"repository": {
 		"type": "git",
@@ -65,7 +67,6 @@
 		"jscs": "^3.0.7",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
-		"nsp": "^3.2.1",
 		"rimraf": "^2.6.2",
 		"semver": "^5.6.0",
 		"tape": "^4.9.1"
