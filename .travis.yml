@@ -7,7 +7,7 @@ node_js:
   - "9.11"
   - "8.15"
   - "7.10"
-  - "6.16"
+  - "6.17"
   - "5.12"
   - "4.9"
   - "iojs-v3.3"
@@ -159,6 +159,8 @@ matrix:
     - node_js: "7.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "7.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.16"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "6.15"
       env: TEST=true ALLOW_FAILURE=true
