@@ -1,6 +1,5 @@
 'use strict';
 
-var fnToStr = Function.prototype.toString;
 var reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;
 var badArrayLike;
 var isCallableMarker;
@@ -24,51 +23,39 @@ if (typeof reflectApply === 'function' && typeof Object.defineProperty === 'func
 }
 
 var constructorRegex = /^\s*class\b/;
-var isES6ClassFn = function isES6ClassFunction(value) {
+var fnToStr = Function.prototype.toString;
+var objToStr = Object.prototype.toString;
+var fnClassStr = '[object Function]';
+var genClassStr = '[object GeneratorFunction]';
+var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+
+var getFnStr = function tryFnStr(value) {
 	try {
-		var fnStr = fnToStr.call(value);
-		return constructorRegex.test(fnStr);
+		return fnToStr.call(value);
 	} catch (e) {
-		return false; // not a function
+		return null;
 	}
 };
 
-var tryFunctionObject = function tryFunctionToStr(value) {
-	try {
-		if (isES6ClassFn(value)) { return false; }
-		fnToStr.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr = Object.prototype.toString;
-var fnClass = '[object Function]';
-var genClass = '[object GeneratorFunction]';
-var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 /* globals document: false */
 var documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};
 
-module.exports = reflectApply
-	? function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		try {
-			reflectApply(value, null, badArrayLike);
-		} catch (e) {
-			if (e !== isCallableMarker) { return false; }
-		}
-		return !isES6ClassFn(value);
+module.exports = function isCallable(value) {
+	if (value === documentDotAll) { return true; }
+	if (!value) { return false; }
+
+	if (typeof value === 'function') {
+		if (!value.prototype) { return true; }
+	} else if (typeof value !== 'object') { return false; }
+
+	var tmp = getFnStr(value);
+	if (tmp === null) {
+		if (hasToStringTag) { return false; }
+	} else {
+		if (constructorRegex.test(tmp)) { return false; }
+		if (hasToStringTag) { return true; }
 	}
-	: function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		if (hasToStringTag) { return tryFunctionObject(value); }
-		if (isES6ClassFn(value)) { return false; }
-		var strClass = toStr.call(value);
-		return strClass === fnClass || strClass === genClass;
-	};
+
+	tmp = objToStr.call(value);
+	return tmp === fnClassStr || tmp === genClassStr;
+};
