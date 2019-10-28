@@ -11,10 +11,11 @@ var weirdlyCommentedArrowFn;
 var asyncFn;
 var asyncArrowFn;
 try {
-	/* eslint no-new-func: 0 */
+	/* eslint-disable no-new-func */
 	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
 	asyncFn = Function('return async function foo() {};')();
 	asyncArrowFn = Function('return async () => {};')();
+	/* eslint-enable no-new-func */
 } catch (e) { /**/ }
 var forEach = require('foreach');
 
