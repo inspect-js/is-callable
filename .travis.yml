@@ -8,6 +8,5 @@ import:
  - ljharb/travis-ci:node/posttest.yml
  - ljharb/travis-ci:node/coverage.yml
 matrix:
-  fast_finish: true
   allow_failures:
     - env: COVERAGE=true
