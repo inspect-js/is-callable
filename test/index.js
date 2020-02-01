@@ -5,16 +5,13 @@
 var test = require('tape');
 var isCallable = require('../');
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
-var genFn = require('make-generator-function');
-var arrowFn = require('make-arrow-function')();
+var generators = require('make-generator-function')();
+var arrows = require('make-arrow-function').list();
+var asyncs = require('make-async-function').list();
 var weirdlyCommentedArrowFn;
-var asyncFn;
-var asyncArrowFn;
 try {
 	/* eslint-disable no-new-func */
 	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
-	asyncFn = Function('return async function foo() {};')();
-	asyncArrowFn = Function('return async () => {};')();
 	/* eslint-enable no-new-func */
 } catch (e) { /**/ }
 var forEach = require('foreach');
@@ -132,13 +129,17 @@ test('Typed Arrays', function (st) {
 	st.end();
 });
 
-test('Generators', { skip: !genFn }, function (t) {
-	t.ok(isCallable(genFn), 'generator function is callable');
+test('Generators', { skip: generators.length === 0 }, function (t) {
+	forEach(generators, function (genFn) {
+		t.ok(isCallable(genFn), 'generator function ' + genFn + ' is callable');
+	});
 	t.end();
 });
 
-test('Arrow functions', { skip: !arrowFn }, function (t) {
-	t.ok(isCallable(arrowFn), 'arrow function is callable');
+test('Arrow functions', { skip: arrows.length === 0 }, function (t) {
+	forEach(arrows, function (arrowFn) {
+		t.ok(isCallable(arrowFn), 'arrow function ' + arrowFn + ' is callable');
+	});
 	t.ok(isCallable(weirdlyCommentedArrowFn), 'weirdly commented arrow functions are callable');
 	t.end();
 });
@@ -152,8 +153,9 @@ test('"Class" constructors', { skip: !classConstructor || !commentedClass || !co
 	t.end();
 });
 
-test('`async function`s', { skip: !asyncFn }, function (t) {
-	t.ok(isCallable(asyncFn), '`async function`s are callable');
-	t.ok(isCallable(asyncArrowFn), '`async` arrow functions are callable');
+test('`async function`s', { skip: asyncs.length === 0 }, function (t) {
+	forEach(asyncs, function (asyncFn) {
+		t.ok(isCallable(asyncFn), '`async function` ' + asyncFn + ' is callable');
+	});
 	t.end();
 });
