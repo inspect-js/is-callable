@@ -56,7 +56,8 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^17.0.0",
+		"@ljharb/eslint-config": "^17.1.0",
+		"aud": "^1.1.2",
 		"covert": "^1.1.1",
 		"eclint": "^2.8.1",
 		"eslint": "^7.0.0",
