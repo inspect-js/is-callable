@@ -1,5 +1,6 @@
 'use strict';
 
+/* globals Proxy */
 /* eslint no-magic-numbers: 1 */
 
 var test = require('tape');
@@ -26,6 +27,19 @@ classFake();
 returnClass();
 return3();
 /* end for coverage */
+
+var proxy;
+if (typeof Proxy === 'function') {
+	try {
+		proxy = new Proxy(function () {}, {});
+		// for coverage
+		proxy();
+		String(proxy);
+	} catch (_) {
+		// Older engines throw a `TypeError` when `Function.prototype.toString` is called on a Proxy object.
+		proxy = null;
+	}
+}
 
 var invokeFunction = function invokeFunctionString(str) {
 	var result;
@@ -157,5 +171,10 @@ test('`async function`s', { skip: asyncs.length === 0 }, function (t) {
 	forEach(asyncs, function (asyncFn) {
 		t.ok(isCallable(asyncFn), '`async function` ' + asyncFn + ' is callable');
 	});
+	t.end();
+});
+
+test('proxies of functions', { skip: !proxy }, function (t) {
+	t.ok(isCallable(proxy), 'proxies of functions are callable');
 	t.end();
 });
