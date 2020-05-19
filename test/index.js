@@ -36,8 +36,11 @@ if (typeof Proxy === 'function') {
 		proxy();
 		String(proxy);
 	} catch (_) {
-		// Older engines throw a `TypeError` when `Function.prototype.toString` is called on a Proxy object.
-		proxy = null;
+		// If `Reflect` is supported, then `Function.prototype.toString` isn't used for callability detection.
+		if (typeof Reflect !== 'object') {
+			// Older engines throw a `TypeError` when `Function.prototype.toString` is called on a Proxy object.
+			proxy = null;
+		}
 	}
 }
 
