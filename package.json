@@ -60,7 +60,7 @@
 		"aud": "^1.1.2",
 		"covert": "^1.1.1",
 		"eclint": "^2.8.1",
-		"eslint": "^7.0.0",
+		"eslint": "^7.1.0",
 		"foreach": "^2.0.5",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
@@ -69,7 +69,7 @@
 		"make-generator-function": "^2.0.0",
 		"rimraf": "^2.7.1",
 		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.0.0"
+		"tape": "^5.0.1"
 	},
 	"testling": {
 		"files": "test/index.js",
