@@ -1,3 +1,9 @@
+1.2.1 / 2020-09-09
+=================
+  * [Fix] phantomjs‘ Reflect.apply does not throw properly on a bad array-like
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`
+  * [meta] fix eclint error
+
 1.2.0 / 2020-06-02
 =================
   * [New] use `Reflect.apply`‑based callability detection
