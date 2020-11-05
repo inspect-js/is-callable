@@ -189,6 +189,7 @@ test('throwing functions', function (t) {
 	t.ok(isCallable(thrower), 'a function that throws is callable');
 });
 
+/* globals document: false */
 test('document.all', { skip: typeof document !== 'object' }, function (t) {
 	t.notOk(isCallable(document), 'document is not callable');
 	t.ok(isCallable(document.all), 'document.all is callable');
