@@ -60,7 +60,7 @@
 		"aud": "^1.1.2",
 		"covert": "^1.1.1",
 		"eclint": "^2.8.1",
-		"eslint": "^7.10.0",
+		"eslint": "^7.12.1",
 		"foreach": "^2.0.5",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-merge": "^1.1.1",
