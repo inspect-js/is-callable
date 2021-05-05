@@ -51,17 +51,17 @@ npm install is-callable
 Simply clone the repo, `npm install`, and run `npm test`
 
 [1]: https://npmjs.org/package/is-callable
-[2]: https://versionbadg.es/ljharb/is-callable.svg
-[5]: https://david-dm.org/ljharb/is-callable.svg
-[6]: https://david-dm.org/ljharb/is-callable
-[7]: https://david-dm.org/ljharb/is-callable/dev-status.svg
-[8]: https://david-dm.org/ljharb/is-callable#info=devDependencies
+[2]: https://versionbadg.es/inspect-js/is-callable.svg
+[5]: https://david-dm.org/inspect-js/is-callable.svg
+[6]: https://david-dm.org/inspect-js/is-callable
+[7]: https://david-dm.org/inspect-js/is-callable/dev-status.svg
+[8]: https://david-dm.org/inspect-js/is-callable#info=devDependencies
 [11]: https://nodei.co/npm/is-callable.png?downloads=true&stars=true
 [license-image]: https://img.shields.io/npm/l/is-callable.svg
 [license-url]: LICENSE
 [downloads-image]: https://img.shields.io/npm/dm/is-callable.svg
 [downloads-url]: https://npm-stat.com/charts.html?package=is-callable
-[codecov-image]: https://codecov.io/gh/ljharb/is-callable/branch/main/graphs/badge.svg
-[codecov-url]: https://app.codecov.io/gh/ljharb/is-callable/
-[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/ljharb/is-callable
-[actions-url]: https://github.com/ljharb/is-callable/actions
+[codecov-image]: https://codecov.io/gh/inspect-js/is-callable/branch/main/graphs/badge.svg
+[codecov-url]: https://app.codecov.io/gh/inspect-js/is-callable/
+[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/inspect-js/is-callable
+[actions-url]: https://github.com/inspect-js/is-callable/actions
