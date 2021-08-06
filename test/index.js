@@ -5,7 +5,7 @@
 
 var test = require('tape');
 var isCallable = require('../');
-var hasSymbols = require('has-symbols')();
+var hasToStringTag = require('has-tostringtag/shams')();
 var v = require('es-value-fixtures');
 var forEach = require('for-each');
 var inspect = require('object-inspect');
@@ -91,7 +91,7 @@ test('not callables', function (t) {
 	t.end();
 });
 
-test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t) {
+test('@@toStringTag', { skip: !hasToStringTag }, function (t) {
 	var fakeFunction = {
 		toString: function () { return String(return3); },
 		valueOf: return3

@@ -53,7 +53,7 @@
 		"es-value-fixtures": "^1.2.1",
 		"eslint": "^7.25.0",
 		"for-each": "^0.3.3",
-		"has-symbols": "^1.0.2",
+		"has-tostringtag": "^1.0.0",
 		"make-arrow-function": "^1.2.0",
 		"make-async-function": "^1.0.0",
 		"make-generator-function": "^2.0.0",
