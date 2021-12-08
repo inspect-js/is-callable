@@ -1,6 +1,5 @@
 'use strict';
 
-/* globals Proxy */
 /* eslint no-magic-numbers: 1 */
 
 var test = require('tape');
