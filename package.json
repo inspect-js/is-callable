@@ -26,8 +26,8 @@
 		"test": "npm run tests-only --",
 		"posttest": "aud --production",
 		"tests-only": "nyc tape 'test/**/*.js'",
-		"prelint": "eclint check *",
-		"lint": "eslint ."
+		"prelint": "eclint check $(git ls-files | xargs find 2> /dev/null | grep -vE 'node_modules|\\.git')",
+		"lint": "eslint --ext=js,mjs ."
 	},
 	"repository": {
 		"type": "git",
