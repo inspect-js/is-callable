@@ -46,22 +46,22 @@
 		"@@toStringTag"
 	],
 	"devDependencies": {
-		"@ljharb/eslint-config": "^20.0.0",
-		"aud": "^1.1.5",
+		"@ljharb/eslint-config": "^20.2.0",
+		"aud": "^2.0.0",
 		"available-typed-arrays": "^1.0.5",
 		"eclint": "^2.8.1",
 		"es-value-fixtures": "^1.2.1",
-		"eslint": "^8.4.1",
+		"eslint": "^8.6.0",
 		"for-each": "^0.3.3",
 		"has-tostringtag": "^1.0.0",
 		"make-arrow-function": "^1.2.0",
 		"make-async-function": "^1.0.0",
 		"make-generator-function": "^2.0.0",
 		"nyc": "^10.3.2",
-		"object-inspect": "^1.11.1",
+		"object-inspect": "^1.12.0",
 		"rimraf": "^2.7.1",
 		"safe-publish-latest": "^2.0.0",
-		"tape": "^5.3.2"
+		"tape": "^5.4.0"
 	},
 	"testling": {
 		"files": "test/index.js",
