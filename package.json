@@ -83,10 +83,5 @@
 	},
 	"engines": {
 		"node": ">= 0.4"
-	},
-	"greenkeeper": {
-		"ignore": [
-			"rimraf"
-		]
 	}
 }
