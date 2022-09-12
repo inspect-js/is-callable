@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.5](https://github.com/inspect-js/is-callable/compare/v1.2.4...v1.2.5) - 2022-09-11
+
+### Commits
+
+- [actions] reuse common workflows [`5bb4b32`](https://github.com/inspect-js/is-callable/commit/5bb4b32dc93987328ab4f396601f751c4a7abd62)
+- [meta] better `eccheck` command [`b9bd597`](https://github.com/inspect-js/is-callable/commit/b9bd597322b6e3a24c74c09881ca73e1d9f9f485)
+- [meta] use `npmignore` to autogenerate an npmignore file [`3192d38`](https://github.com/inspect-js/is-callable/commit/3192d38527c7fc461d05d5aa93d47628e658bc45)
+- [Fix] for HTML constructors, always use `tryFunctionObject` even in pre-toStringTag browsers [`3076ea2`](https://github.com/inspect-js/is-callable/commit/3076ea21d1f6ecc1cb711dcf1da08f257892c72b)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `available-typed-arrays`, `object-inspect`, `safe-publish-latest`, `tape` [`8986746`](https://github.com/inspect-js/is-callable/commit/89867464c42adc5cd375ee074a4574b0295442cb)
+- [meta] add `auto-changelog` [`7dda9d0`](https://github.com/inspect-js/is-callable/commit/7dda9d04e670a69ae566c8fa596da4ff4371e615)
+- [Fix] properly report `document.all` [`da90b2b`](https://github.com/inspect-js/is-callable/commit/da90b2b68dc4f33702c2e01ad07b4f89bcb60984)
+- [actions] update codecov uploader [`c8f847c`](https://github.com/inspect-js/is-callable/commit/c8f847c90e04e54ff73c7cfae86e96e94990e324)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `object-inspect`, `tape` [`899ae00`](https://github.com/inspect-js/is-callable/commit/899ae00b6abd10d81fc8bc7f02b345fd885d5f56)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `es-value-fixtures`, `object-inspect`, `tape` [`344e913`](https://github.com/inspect-js/is-callable/commit/344e913b149609bf741aa7345fa32dc0b90d8893)
+- [meta] remove greenkeeper config [`737dce5`](https://github.com/inspect-js/is-callable/commit/737dce5590b1abb16183a63cb9d7d26920b3b394)
+- [meta] npmignore coverage output [`680a883`](https://github.com/inspect-js/is-callable/commit/680a8839071bf36a419fe66e1ced7a3303c27b28)
+
 <!-- auto-changelog-above -->
 1.2.4 / 2021-08-05
 =================
