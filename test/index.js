@@ -179,9 +179,9 @@ test('DOM', function (t) {
 		var constructor = global[name];
 
 		t.test(name, { skip: !constructor }, function (st) {
-			st.match(typeof constructor, /^(?:function|object)$/, name + ' is a function');
+			st.match(typeof constructor, /^(?:function|object)$/, name + ' is a function or object');
 
-			st.equal(isCallable(constructor), !isIE68, name + ' is ' + (isIE68 ? 'not ' : '') + 'callable');
+			st.equal(isCallable(constructor), typeof constructor === 'function', name + ' is ' + (isIE68 ? 'not ' : '') + 'callable');
 
 			st.end();
 		});

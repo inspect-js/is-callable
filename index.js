@@ -51,7 +51,7 @@ var isDDA = typeof document === 'object' ? function isDocumentDotAll(value) {
 	// in IE 8, typeof document.all is "object"
 	if (typeof value === 'undefined' || typeof value === 'object') {
 		try {
-			return value('') === null;
+			return value('') == null; // eslint-disable-line eqeqeq
 		} catch (e) { /**/ }
 	}
 	return false;
