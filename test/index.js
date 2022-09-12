@@ -19,6 +19,8 @@ try {
 	/* eslint-enable no-new-func */
 } catch (e) { /**/ }
 
+var isIE68 = !(0 in [undefined]);
+
 var noop = function () {};
 var classFake = function classFake() { }; // eslint-disable-line func-name-matching
 var returnClass = function () { return ' class '; };
@@ -160,10 +162,30 @@ test('throwing functions', function (t) {
 	t.ok(isCallable(thrower), 'a function that throws is callable');
 });
 
-/* globals document: false */
-test('document.all', { skip: typeof document !== 'object' }, function (t) {
-	t.notOk(isCallable(document), 'document is not callable');
-	t.ok(isCallable(document.all), 'document.all is callable');
+test('DOM', function (t) {
+	/* eslint-env browser */
+
+	t.test('document.all', { skip: typeof document !== 'object' }, function (st) {
+		st.notOk(isCallable(document), 'document is not callable');
+		st.ok(isCallable(document.all), 'document.all is callable');
+
+		st.end();
+	});
+
+	forEach([
+		'HTMLElement',
+		'HTMLAnchorElement'
+	], function (name) {
+		var constructor = global[name];
+
+		t.test(name, { skip: !constructor }, function (st) {
+			st.match(typeof constructor, /^(?:function|object)$/, name + ' is a function');
+
+			st.equal(isCallable(constructor), !isIE68, name + ' is ' + (isIE68 ? 'not ' : '') + 'callable');
+
+			st.end();
+		});
+	});
 
 	t.end();
 });
