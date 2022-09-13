@@ -20,6 +20,7 @@ try {
 } catch (e) { /**/ }
 
 var isIE68 = !(0 in [undefined]);
+var isFirefox = typeof window !== 'undefined' && ('netscape' in window) && (/ rv:/).test(navigator.userAgent);
 
 var noop = function () {};
 var classFake = function classFake() { }; // eslint-disable-line func-name-matching
@@ -78,11 +79,19 @@ test('not callables', function (t) {
 		new RegExp('a', 'g'),
 		new Date()
 	]), function (nonFunction) {
-		t['throws'](
-			function () { Function.prototype.toString.call(nonFunction); },
-			TypeError,
-			inspect(nonFunction) + ' can not be used with Function toString'
-		);
+		if (isFirefox && nonFunction == null) { // eslint-disable-line eqeqeq
+			// Firefox 3 throws some kind of *object* here instead of a proper error
+			t['throws'](
+				function () { Function.prototype.toString.call(nonFunction); },
+				inspect(nonFunction) + ' can not be used with Function toString'
+			);
+		} else {
+			t['throws'](
+				function () { Function.prototype.toString.call(nonFunction); },
+				TypeError,
+				inspect(nonFunction) + ' can not be used with Function toString'
+			);
+		}
 		t.equal(isCallable(nonFunction), false, inspect(nonFunction) + ' is not callable');
 	});
 
@@ -172,7 +181,10 @@ test('DOM', function (t) {
 
 	t.test('document.all', { skip: typeof document !== 'object' }, function (st) {
 		st.notOk(isCallable(document), 'document is not callable');
-		st.ok(isCallable(document.all), 'document.all is callable');
+
+		var all = document.all;
+		var isFF3 = Object.prototype.toString(all) === Object.prototype.toString.call(document.all);
+		st.equal(isCallable(document.all), isFF3, 'document.all is ' + (isFF3 ? 'not ' : '') + 'callable');
 
 		st.end();
 	});
