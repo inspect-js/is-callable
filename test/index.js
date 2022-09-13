@@ -78,6 +78,11 @@ test('not callables', function (t) {
 		new RegExp('a', 'g'),
 		new Date()
 	]), function (nonFunction) {
+		t['throws'](
+			function () { Function.prototype.toString.call(nonFunction); },
+			TypeError,
+			inspect(nonFunction) + ' can not be used with Function toString'
+		);
 		t.equal(isCallable(nonFunction), false, inspect(nonFunction) + ' is not callable');
 	});
 
