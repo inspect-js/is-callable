@@ -61,6 +61,7 @@ var invokeFunction = function invokeFunctionString(str) {
 };
 
 var classConstructor = invokeFunction('"use strict"; return class Foo {}');
+var hasDetectableClasses = classConstructor && Function.prototype.toString.call(classConstructor) === 'class Foo {}';
 
 var commentedClass = invokeFunction('"use strict"; return class/*kkk*/\n//blah\n Bar\n//blah\n {}');
 var commentedClassOneLine = invokeFunction('"use strict"; return class/**/A{}');
@@ -148,7 +149,12 @@ test('Arrow functions', { skip: arrows.length === 0 }, function (t) {
 	t.end();
 });
 
-test('"Class" constructors', { skip: !classConstructor || !commentedClass || !commentedClassOneLine || !classAnonymous }, function (t) {
+test('"Class" constructors', {
+	skip: !classConstructor || !commentedClass || !commentedClassOneLine || !classAnonymous, todo: !hasDetectableClasses
+}, function (t) {
+	if (!hasDetectableClasses) {
+		t.comment('WARNING: This engine does not support detectable classes');
+	}
 	t.notOk(isCallable(classConstructor), 'class constructors are not callable');
 	t.notOk(isCallable(commentedClass), 'class constructors with comments in the signature are not callable');
 	t.notOk(isCallable(commentedClassOneLine), 'one-line class constructors with comments in the signature are not callable');
