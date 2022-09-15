@@ -11,6 +11,19 @@
 
 Is this JS value callable? Works with Functions and GeneratorFunctions, despite ES6 @@toStringTag.
 
+## Supported engines
+Automatically tested in every minor version of node.
+
+Manually tested in:
+ - Safari: v4 - v15 <sub>(4, 5, 5.1, 6.0.5, 6.2, 7.1, 8, 9.1.3, 10.1.2, 11.1.2, 12.1, 13.1.2, 14.1.2, 15.3, 15.6.1)</sub>
+   - Note: Safari 9 has `class`, but `Function.prototype.toString` hides that progeny and makes them look like functions, so `class` constructors will be reported by this package as callable, when they are not in fact callable.
+ - Chrome: v15 - v81, v83 - v106<sub>(every integer version)</sub>
+   - Note: This includes Edge v80+ and Opera v15+, which matches Chrome
+ - Firefox: v3, v3.6, v4 - v105 <sub>(every integer version)</sub>
+   - Note: Firefox v45 - v54 has `class`, but `Function.prototype.toString` hides that progeny and makes them look like functions, so `class` constructors will be reported by this package as callable, when they are not in fact callable.
+ - IE: v6 - v11<sub>(every integer version</sub>
+ - Opera: v11.1, v11.5, v11.6, 12?, v12.1, v12.12?, v12.14, v12.15, v12.16, v15+ <sub>v15+ matches Chrome</sub>
+
 ## Example
 
 ```js
