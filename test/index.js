@@ -91,18 +91,20 @@ test('not callables', function (t) {
 			t.comment('FF 3.6 has a Function toString that coerces its receiver, so this test is skipped');
 			return;
 		}
-		if (isFirefox && nonFunction == null) { // eslint-disable-line eqeqeq
+		if (nonFunction != null) { // eslint-disable-line eqeqeq
+			if (isFirefox) {
 			// Firefox 3 throws some kind of *object* here instead of a proper error
-			t['throws'](
-				function () { Function.prototype.toString.call(nonFunction); },
-				inspect(nonFunction) + ' can not be used with Function toString'
-			);
-		} else {
-			t['throws'](
-				function () { Function.prototype.toString.call(nonFunction); },
-				TypeError,
-				inspect(nonFunction) + ' can not be used with Function toString'
-			);
+				t['throws'](
+					function () { Function.prototype.toString.call(nonFunction); },
+					inspect(nonFunction) + ' can not be used with Function toString'
+				);
+			} else {
+				t['throws'](
+					function () { Function.prototype.toString.call(nonFunction); },
+					TypeError,
+					inspect(nonFunction) + ' can not be used with Function toString'
+				);
+			}
 		}
 		t.equal(isCallable(nonFunction), false, inspect(nonFunction) + ' is not callable');
 	});
