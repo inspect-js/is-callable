@@ -21,6 +21,13 @@ try {
 
 var isIE68 = !(0 in [undefined]);
 var isFirefox = typeof window !== 'undefined' && ('netscape' in window) && (/ rv:/).test(navigator.userAgent);
+var fnToStringCoerces;
+try {
+	Function.prototype.toString.call(v.uncoercibleFnObject);
+	fnToStringCoerces = true;
+} catch (e) {
+	fnToStringCoerces = false;
+}
 
 var noop = function () {};
 var classFake = function classFake() { }; // eslint-disable-line func-name-matching
@@ -80,6 +87,10 @@ test('not callables', function (t) {
 		new RegExp('a', 'g'),
 		new Date()
 	]), function (nonFunction) {
+		if (fnToStringCoerces && nonFunction === v.coercibleFnObject) {
+			t.comment('FF 3.6 has a Function toString that coerces its receiver, so this test is skipped');
+			return;
+		}
 		if (isFirefox && nonFunction == null) { // eslint-disable-line eqeqeq
 			// Firefox 3 throws some kind of *object* here instead of a proper error
 			t['throws'](
