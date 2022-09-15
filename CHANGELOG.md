@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.6](https://github.com/inspect-js/is-callable/compare/v1.2.5...v1.2.6) - 2022-09-14
+
+### Commits
+
+- [Fix] work for `document.all` in Firefox 3 and IE 6-8 [`015132a`](https://github.com/inspect-js/is-callable/commit/015132aaef886ec777b5b3593ef4ce461dd0c7d4)
+- [Test] skip function toString check for nullish values [`8698116`](https://github.com/inspect-js/is-callable/commit/8698116f95eb59df8b48ec8e4585fc1cdd8cae9f)
+- [readme] add "supported engines" section [`0442207`](https://github.com/inspect-js/is-callable/commit/0442207a89a1554d41ba36daf21862ef7ccbd500)
+- [Tests] skip one of the fixture objects in FF 3.6 [`a501141`](https://github.com/inspect-js/is-callable/commit/a5011410bc6edb276c6ec8b47ce5c5d83c4bee15)
+- [Tests] allow `class` constructor tests to fail in FF v45 - v54, which has undetectable classes [`b12e4a4`](https://github.com/inspect-js/is-callable/commit/b12e4a4d8c438678bd7710f9f896680150766b51)
+- [Fix] Safari 4: regexes should not be considered callable [`4b732ff`](https://github.com/inspect-js/is-callable/commit/4b732ffa34346db3f0193ea4e46b7d4e637e6c82)
+- [Fix] properly recognize `document.all` in Safari 4 [`3193735`](https://github.com/inspect-js/is-callable/commit/319373525dc4603346661641840cd9a3e0613136)
+
 ## [v1.2.5](https://github.com/inspect-js/is-callable/compare/v1.2.4...v1.2.5) - 2022-09-11
 
 ### Commits
