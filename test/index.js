@@ -203,7 +203,7 @@ test('DOM', function (t) {
 
 		var all = document.all;
 		var isFF3 = Object.prototype.toString(all) === Object.prototype.toString.call(document.all);
-		st.equal(isCallable(document.all), isFF3, 'document.all is ' + (isFF3 ? 'not ' : '') + 'callable');
+		st.equal(isCallable(document.all), !isFF3, 'document.all is ' + (isFF3 ? 'not ' : '') + 'callable');
 
 		st.end();
 	});
