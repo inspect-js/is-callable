@@ -93,6 +93,6 @@ module.exports = reflectApply
 		if (hasToStringTag) { return tryFunctionObject(value); }
 		if (isES6ClassFn(value)) { return false; }
 		var strClass = toStr.call(value);
-		if (strClass !== fnClass && strClass !== genClass) { return false; }
+		if (strClass !== fnClass && strClass !== genClass && !(/^\[object HTML/).test(strClass)) { return false; }
 		return tryFunctionObject(value);
 	};
