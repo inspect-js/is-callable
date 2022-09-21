@@ -48,6 +48,7 @@ var fnClass = '[object Function]';
 var genClass = '[object GeneratorFunction]';
 var ddaClass = '[object HTMLAllCollection]';
 var ddaClass2 = '[object HTML document.all class]';
+var ddaClass3 = '[object HTMLCollection]'; // opera 12.16
 var hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
 
 var isIE68 = !(0 in [,]); // eslint-disable-line no-sparse-arrays, comma-spacing
@@ -64,7 +65,7 @@ if (typeof document === 'object') {
 				try {
 					var str = toStr.call(value);
 					// IE 6-8 uses `objectClass`
-					return (str === ddaClass || str === ddaClass2 || str === objectClass) && value('') == null; // eslint-disable-line eqeqeq
+					return (str === ddaClass || str === ddaClass2 || str === ddaClass3 || str === objectClass) && value('') == null; // eslint-disable-line eqeqeq
 				} catch (e) { /**/ }
 			}
 			return false;
