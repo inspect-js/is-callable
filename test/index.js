@@ -202,7 +202,7 @@ test('DOM', function (t) {
 		st.notOk(isCallable(document), 'document is not callable');
 
 		var all = document.all;
-		var isFF3 = Object.prototype.toString(all) === Object.prototype.toString.call(document.all);
+		var isFF3 = !isIE68 && Object.prototype.toString(all) === Object.prototype.toString.call(document.all); // this test is true in IE 6-8 also
 		var expected = false;
 		if (!isFF3) {
 			try {
