@@ -47,6 +47,7 @@ var objectClass = '[object Object]';
 var fnClass = '[object Function]';
 var genClass = '[object GeneratorFunction]';
 var ddaClass = '[object HTMLAllCollection]';
+var ddaClass2 = '[object HTML document.all class]';
 var hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
 
 var isIE68 = !(0 in [,]); // eslint-disable-line no-sparse-arrays, comma-spacing
@@ -63,7 +64,7 @@ if (typeof document === 'object') {
 				try {
 					var str = toStr.call(value);
 					// IE 6-8 uses `objectClass`
-					return (str === ddaClass || str === objectClass) && value('') == null; // eslint-disable-line eqeqeq
+					return (str === ddaClass || str === ddaClass2 || str === objectClass) && value('') == null; // eslint-disable-line eqeqeq
 				} catch (e) { /**/ }
 			}
 			return false;
@@ -91,5 +92,6 @@ module.exports = reflectApply
 		if (hasToStringTag) { return tryFunctionObject(value); }
 		if (isES6ClassFn(value)) { return false; }
 		var strClass = toStr.call(value);
-		return strClass === fnClass || strClass === genClass || tryFunctionObject(value);
+		if (strClass !== fnClass && strClass !== genClass) { return false; }
+		return tryFunctionObject(value);
 	};

@@ -203,7 +203,13 @@ test('DOM', function (t) {
 
 		var all = document.all;
 		var isFF3 = Object.prototype.toString(all) === Object.prototype.toString.call(document.all);
-		st.equal(isCallable(document.all), !isFF3, 'document.all is ' + (isFF3 ? 'not ' : '') + 'callable');
+		var expected = false;
+		if (!isFF3) {
+			try {
+				expected = document.all('') == null; // eslint-disable-line eqeqeq
+			} catch (e) { /**/ }
+		}
+		st.equal(isCallable(document.all), expected, 'document.all is ' + (isFF3 ? 'not ' : '') + 'callable');
 
 		st.end();
 	});
