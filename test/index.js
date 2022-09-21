@@ -223,7 +223,21 @@ test('DOM', function (t) {
 		t.test(name, { skip: !constructor }, function (st) {
 			st.match(typeof constructor, /^(?:function|object)$/, name + ' is a function or object');
 
-			st.equal(isCallable(constructor), typeof constructor === 'function', name + ' is ' + (isIE68 ? 'not ' : '') + 'callable');
+			var callable = isCallable(constructor);
+			st.equal(typeof callable, 'boolean');
+
+			if (callable) {
+				st.doesNotThrow(
+					function () { Function.prototype.toString.call(constructor); },
+					'anything this library claims is callable should be accepted by Function toString'
+				);
+			} else {
+				st['throws'](
+					function () { Function.prototype.toString.call(constructor); },
+					TypeError,
+					'anything this library claims is not callable should not be accepted by Function toString'
+				);
+			}
 
 			st.end();
 		});
