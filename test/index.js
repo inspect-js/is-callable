@@ -48,11 +48,8 @@ if (typeof Proxy === 'function') {
 		proxy();
 		String(proxy);
 	} catch (_) {
-		// If `Reflect` is supported, then `Function.prototype.toString` isn't used for callability detection.
-		if (typeof Reflect !== 'object') {
-			// Older engines throw a `TypeError` when `Function.prototype.toString` is called on a Proxy object.
-			proxy = null;
-		}
+		// Older engines throw a `TypeError` when `Function.prototype.toString` is called on a Proxy object.
+		proxy = null;
 	}
 }
 
@@ -184,7 +181,7 @@ test('`async function`s', { skip: asyncs.length === 0 }, function (t) {
 });
 
 test('proxies of functions', { skip: !proxy }, function (t) {
-	t.ok(isCallable(proxy), 'proxies of functions are callable');
+	t.equal(isCallable(proxy), true, 'proxies of functions are callable');
 	t.end();
 });
 
